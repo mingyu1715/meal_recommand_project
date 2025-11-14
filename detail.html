@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MealMenu AI - Lemon Herb Chicken Recipe</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4CAF50",
+                        "secondary": "#FF7F50",
+                        "accent": "#6495ED",
+                        "background-light": "#F8F9FA",
+                        "background-dark": "#1a1a1a",
+                        "text-light": "#343A40",
+                        "text-dark": "#e0e0e0",
+                        "subtext-light": "#495057",
+                        "subtext-dark": "#a0a0a0"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 w-full border-b border-gray-200/50 dark:border-gray-700/50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="container mx-auto px-4">
+<div class="flex h-16 items-center justify-between whitespace-nowrap">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-text-light dark:text-text-dark">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12,2A10,10,0,0,0,2,12A10,10,0,0,0,12,22A10,10,0,0,0,22,12A10,10,0,0,0,12,2M11,16.5V14.5H13V16.5H11M11,12.5V7.5H13V12.5H11Z"></path></svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight">MealMenu AI</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium text-primary" href="#">Recipes</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">My Plan</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Profile</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-2">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Log In</span>
+</button>
+<button class="hidden sm:flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-gray-200 dark:bg-gray-700 text-text-light dark:text-text-dark text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Sign Up</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="layout-container flex h-full grow flex-col">
+<div class="container mx-auto px-4 py-8">
+<div class="layout-content-container flex flex-col w-full">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 mb-6">
+<a class="text-subtext-light dark:text-subtext-dark hover:text-primary text-sm font-medium leading-normal" href="#">Recipes</a>
+<span class="text-subtext-light dark:text-subtext-dark text-sm font-medium leading-normal">/</span>
+<a class="text-subtext-light dark:text-subtext-dark hover:text-primary text-sm font-medium leading-normal" href="#">Lunch</a>
+<span class="text-subtext-light dark:text-subtext-dark text-sm font-medium leading-normal">/</span>
+<span class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">Lemon Herb Chicken</span>
+</div>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Left Column: Image and Details -->
+<div class="flex flex-col gap-6">
+<!-- HeaderImage -->
+<div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden rounded-xl min-h-[400px]" data-alt="A beautifully plated dish of golden-brown lemon herb chicken, garnished with fresh parsley and lemon slices." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD08RMPq0sKgPQbigH9pGtPE2qS4cvcp_n-pI5NjXebuDo_O7TQQLJgsFVrYy_i9PQ1o72buXqIi9uucwGamSmAlcvNs-LMZUXHUJqrRXf4zSaRD3W4HjHSBywLJxGrWSY5utaiqGsyiqdpMkalbv1cKzYieAkKe9_oJrB2W9RyGGCL7VPEVh0jk0EhRLfgLzrLPSVjKnRPS2U05RXpnkHtd_SEhStiZByAtP1CseCSwPtpKEU3jis-AL5L1VHxyOeEwFaFzt0tuDve");'></div>
+<!-- Key Details -->
+<div class="grid grid-cols-3 gap-4 text-center">
+<div class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">timer</span>
+<p class="font-bold mt-1">Prep Time</p>
+<p class="text-subtext-light dark:text-subtext-dark text-sm">10 mins</p>
+</div>
+<div class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">local_fire_department</span>
+<p class="font-bold mt-1">Cook Time</p>
+<p class="text-subtext-light dark:text-subtext-dark text-sm">20 mins</p>
+</div>
+<div class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">restaurant</span>
+<p class="font-bold mt-1">Servings</p>
+<p class="text-subtext-light dark:text-subtext-dark text-sm">2 people</p>
+</div>
+</div>
+</div>
+<!-- Right Column: Nutrition and Info -->
+<div class="flex flex-col gap-6">
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between gap-3">
+<div class="flex flex-col gap-3">
+<h1 class="text-4xl lg:text-5xl font-black leading-tight tracking-tight">Lemon Herb Chicken</h1>
+<p class="text-subtext-light dark:text-subtext-dark text-base font-normal leading-normal max-w-prose">A refreshing and zesty chicken dish, packed with protein and perfect for a light, healthy meal. Quick to prepare and full of flavor.</p>
+</div>
+</div>
+<!-- Chips -->
+<div class="flex gap-2 flex-wrap">
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 px-3">
+<p class="text-primary text-sm font-medium leading-normal">High Protein</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 px-3">
+<p class="text-primary text-sm font-medium leading-normal">Low Carb</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 px-3">
+<p class="text-primary text-sm font-medium leading-normal">Quick Meal</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 px-3">
+<p class="text-primary text-sm font-medium leading-normal">Under 30 mins</p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-4 pt-2">
+<button class="flex-grow flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] gap-2">
+<span class="material-symbols-outlined">add</span>
+<span class="truncate">Add to My Meal Plan</span>
+</button>
+<button class="flex items-center justify-center size-12 border border-gray-300 dark:border-gray-600 rounded-lg text-secondary">
+<span class="material-symbols-outlined text-2xl">favorite_border</span>
+</button>
+<button class="flex items-center justify-center size-12 border border-gray-300 dark:border-gray-600 rounded-lg">
+<span class="material-symbols-outlined text-2xl">print</span>
+</button>
+</div>
+<!-- Nutritional Overview -->
+<div class="p-6 bg-gray-100 dark:bg-gray-800 rounded-xl">
+<h2 class="text-2xl font-bold mb-4">Nutritional Overview</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+<div class="relative w-48 h-48 mx-auto">
+<svg class="transform -rotate-90" viewbox="0 0 36 36">
+<circle class="stroke-current text-gray-200 dark:text-gray-700" cx="18" cy="18" fill="transparent" r="15.9155" stroke-width="3"></circle>
+<circle class="stroke-current text-secondary" cx="18" cy="18" fill="transparent" r="15.9155" stroke-dasharray="25, 75" stroke-dashoffset="0" stroke-width="3"></circle> <!-- Fat 25% -->
+<circle class="stroke-current text-accent" cx="18" cy="18" fill="transparent" r="15.9155" stroke-dasharray="10, 90" stroke-dashoffset="-25" stroke-width="3"></circle> <!-- Carbs 10% -->
+<circle class="stroke-current text-primary" cx="18" cy="18" fill="transparent" r="15.9155" stroke-dasharray="65, 35" stroke-dashoffset="-35" stroke-width="3"></circle> <!-- Protein 65% -->
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="text-3xl font-black">450</span>
+<span class="text-xs text-subtext-light dark:text-subtext-dark">Calories</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2"><span class="size-3 rounded-full bg-primary"></span><p><strong>Protein:</strong> 73g (65%)</p></div>
+<div class="flex items-center gap-2"><span class="size-3 rounded-full bg-secondary"></span><p><strong>Fat:</strong> 12g (25%)</p></div>
+<div class="flex items-center gap-2"><span class="size-3 rounded-full bg-accent"></span><p><strong>Carbs:</strong> 11g (10%)</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tabbed Content -->
+<div class="mt-12">
+<div class="border-b border-gray-200 dark:border-gray-700">
+<nav aria-label="Tabs" class="-mb-px flex gap-6">
+<a class="shrink-0 border-b-2 border-primary px-1 pb-4 text-sm font-medium text-primary" href="#">Ingredients</a>
+<a class="shrink-0 border-b-2 border-transparent px-1 pb-4 text-sm font-medium text-subtext-light dark:text-subtext-dark hover:border-gray-300 dark:hover:border-gray-600 hover:text-text-light dark:hover:text-text-dark" href="#">Instructions</a>
+<a class="shrink-0 border-b-2 border-transparent px-1 pb-4 text-sm font-medium text-subtext-light dark:text-subtext-dark hover:border-gray-300 dark:hover:border-gray-600 hover:text-text-light dark:hover:text-text-dark" href="#">Full Nutrition Facts</a>
+</nav>
+</div>
+<div class="py-6">
+<!-- Ingredients Tab Content -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<p>2 (6oz) boneless, skinless chicken breasts</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<p>1 large lemon, juiced and zested</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<p>2 tablespoons olive oil</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<p>2 cloves garlic, minced</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<p>1 teaspoon dried oregano</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<p>1 teaspoon dried thyme</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<p>1/2 teaspoon black pepper</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<p>1/4 teaspoon salt</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<p>Fresh parsley, chopped, for garnish</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
