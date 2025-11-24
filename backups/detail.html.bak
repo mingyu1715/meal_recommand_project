@@ -68,6 +68,7 @@
     <!-- Navigation -->
     <nav class="hidden md:flex items-center gap-8">
         <a class="text-sm font-medium hover:text-primary transition-colors" href="dashborad.html">Home</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors" href="dashborad.html">Favorites</a>
         <a class="text-sm font-medium hover:text-primary transition-colors" href="myplan.html">My Plan</a>
         <a class="text-sm font-medium hover:text-primary transition-colors" href="userprofile.html">Profile</a>
     </nav>
@@ -85,65 +86,92 @@
 <main class="mx-auto w-full max-w-7xl flex flex-col gap-8 px-4 md:px-10 lg:px-20 py-6">
 <div class="layout-content-container flex flex-col w-full">
 <!-- Breadcrumbs -->
-<div class="flex flex-wrap gap-2 mb-2">
+<div class="flex flex-wrap gap-2 mb-6">
 <a class="text-subtle-light dark:text-subtle-dark hover:text-primary text-sm font-medium leading-normal" href="dashborad.html">Recipes</a>
 <span class="text-subtle-light dark:text-subtle-dark text-sm font-medium leading-normal">/</span>
 <a class="text-subtle-light dark:text-subtle-dark hover:text-primary text-sm font-medium leading-normal" href="dashborad.html">Lunch</a>
 <span class="text-subtle-light dark:text-subtle-dark text-sm font-medium leading-normal">/</span>
-<span id="detail-breadcrumb" class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">Meal detail</span>
-</div>
-<p id="detail-status" class="text-sm text-text-light/70 dark:text-text-dark/70 mb-4"></p>
-<div class="mb-4">
-<h1 id="detail-title" class="text-4xl font-black leading-tight tracking-tight text-text-light dark:text-text-dark">Meal title</h1>
-<p id="detail-summary" class="text-base text-text-light/70 dark:text-text-dark/70 mt-2">Meal description will appear here.</p>
+<span class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">Lemon Herb Chicken</span>
 </div>
 <!-- Main Content Grid -->
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-<!-- Left Column: Key Details -->
+<!-- Left Column: Image and Details -->
 <div class="flex flex-col gap-6">
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+<!-- HeaderImage -->
+<div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden rounded-xl min-h-[400px]" data-alt="A beautifully plated dish of golden-brown lemon herb chicken, garnished with fresh parsley and lemon slices." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD08RMPq0sKgPQbigH9pGtPE2qS4cvcp_n-pI5NjXebuDo_O7TQQLJgsFVrYy_i9PQ1o72buXqIi9uucwGamSmAlcvNs-LMZUXHUJqrRXf4zSaRD3W4HjHSBywLJxGrWSY5utaiqGsyiqdpMkalbv1cKzYieAkKe9_oJrB2W9RyGGCL7VPEVh0jk0EhRLfgLzrLPSVjKnRPS2U05RXpnkHtd_SEhStiZByAtP1CseCSwPtpKEU3jis-AL5L1VHxyOeEwFaFzt0tuDve");'></div>
+<!-- Key Details -->
+<div class="grid grid-cols-3 gap-4 text-center">
+<div class="p-4 bg-surface-light dark:bg-surface-dark rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">timer</span>
+<p class="font-bold mt-1">Prep Time</p>
+<p class="text-subtle-light dark:text-subtle-dark text-sm">10 mins</p>
+</div>
 <div class="p-4 bg-surface-light dark:bg-surface-dark rounded-lg">
 <span class="material-symbols-outlined text-primary text-3xl">local_fire_department</span>
-<p class="font-bold mt-1">Calories</p>
-<p id="detail-calories" class="text-subtle-light dark:text-subtle-dark text-sm">--</p>
+<p class="font-bold mt-1">Cook Time</p>
+<p class="text-subtle-light dark:text-subtle-dark text-sm">20 mins</p>
 </div>
 <div class="p-4 bg-surface-light dark:bg-surface-dark rounded-lg">
-    <span class="material-symbols-outlined text-primary text-3xl">nutrition</span>
-    <p class="font-bold mt-1">Protein</p>
-    <p id="detail-protein" class="text-subtle-light dark:text-subtle-dark text-sm">--</p>
-</div>
-<div class="p-4 bg-surface-light dark:bg-surface-dark rounded-lg">
-    <span class="material-symbols-outlined text-primary text-3xl">grain</span>
-    <p class="font-bold mt-1">Carbs</p>
-    <p id="detail-carbs" class="text-subtle-light dark:text-subtle-dark text-sm">--</p>
-</div>
-<div class="p-4 bg-surface-light dark:bg-surface-dark rounded-lg">
-    <span class="material-symbols-outlined text-primary text-3xl">water_drop</span>
-    <p class="font-bold mt-1">Fat</p>
-    <p id="detail-fat" class="text-subtle-light dark:text-subtle-dark text-sm">--</p>
+<span class="material-symbols-outlined text-primary text-3xl">restaurant</span>
+<p class="font-bold mt-1">Servings</p>
+<p class="text-subtle-light dark:text-subtle-dark text-sm">2 people</p>
 </div>
 </div>
-
-<!-- Right Column: Ingredients & Steps (placeholder) -->
+</div>
+<!-- Right Column: Nutrition and Info -->
 <div class="flex flex-col gap-6">
-    <h2 class="text-2xl font-bold">Serving Notes</h2>
-    <ul class="list-disc pl-5 text-sm text-subtle-light dark:text-subtle-dark">
-        <li id="detail-serving">Serving size: -</li>
-        <li id="detail-source">Source: -</li>
-    </ul>
-    <h2 class="text-2xl font-bold">Tags</h2>
-    <div id="detail-tags" class="flex flex-wrap gap-2">
-        <span class="text-sm text-text-light/60 dark:text-text-dark/60">No tags</span>
-    </div>
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between gap-3">
+<div class="flex flex-col gap-3">
+<h1 class="text-4xl lg:text-5xl font-black leading-tight tracking-tight">Lemon Herb Chicken</h1>
+<p class="text-subtle-light dark:text-subtle-dark text-base font-normal leading-normal max-w-prose">A refreshing and zesty chicken dish, packed with protein and perfect for a light, healthy meal. Quick to prepare and full of flavor.</p>
 </div>
-
+</div>
+<!-- Chips -->
+<div class="flex gap-2 flex-wrap">
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 px-3">
+<p class="text-primary text-sm font-medium leading-normal">High Protein</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 px-3">
+<p class="text-primary text-sm font-medium leading-normal">Low Carb</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 px-3">
+<p class="text-primary text-sm font-medium leading-normal">Quick Meal</p>
+</div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 px-3">
+<p class="text-primary text-sm font-medium leading-normal">Under 30 mins</p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-4 pt-2">
+<button class="flex-grow flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-text-light dark:text-text-dark text-base font-bold leading-normal tracking-[0.015em] gap-2 hover:opacity-90">
+<span class="material-symbols-outlined">add</span>
+<span class="truncate">Add to My Meal Plan</span>
+</button>
+<button class="flex items-center justify-center size-12 border border-border-light dark:border-border-dark rounded-lg text-primary hover:bg-primary/10">
+<span class="material-symbols-outlined text-2xl">favorite_border</span>
+</button>
+<button class="flex items-center justify-center size-12 border border-border-light dark:border-border-dark rounded-lg text-text-light dark:text-text-dark hover:bg-subtle-light/20 dark:hover:bg-subtle-dark/20">
+<span class="material-symbols-outlined text-2xl">print</span>
+</button>
+</div>
+<!-- Nutritional Overview -->
+<div id="nutrition-facts" class="p-6 bg-surface-light dark:bg-surface-dark rounded-xl">
+<h2 class="text-2xl font-bold mb-4">Nutritional Overview</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+<div class="relative w-48 h-48 mx-auto">
+<svg class="transform -rotate-90" viewbox="0 0 36 36">
+<circle class="stroke-current text-border-light dark:text-border-dark" cx="18" cy="18" fill="transparent" r="15.9155" stroke-width="3"></circle>
+<circle class="stroke-current text-primary" cx="18" cy="18" fill="transparent" r="15.9155" stroke-dasharray="25, 75" stroke-dashoffset="0" stroke-width="3"></circle>
+<circle class="stroke-current text-accent" cx="18" cy="18" fill="transparent" r="15.9155" stroke-dasharray="10, 90" stroke-dashoffset="-25" stroke-width="3"></circle>
+<circle class="stroke-current text-primary" cx="18" cy="18" fill="transparent" r="15.9155" stroke-dasharray="65, 35" stroke-dashoffset="-35" stroke-width="3"></circle>
+</svg>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </main>
 </div>
-
-<script src="/js/api.js"></script>
-<script src="/js/detail.js"></script>
-<script src="/js/session.js"></script>
-</body>
-</html>
+</body></html>

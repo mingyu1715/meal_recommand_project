@@ -1,147 +1,237 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>NutriAI - Meal Feedback</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-<script id="tailwind-config">
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>NutriAI - Meal Feedback</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
         theme: {
           extend: {
             colors: {
-              "primary": "#4CAF50",
-              "background-light": "#F5F5F5",
-              "background-dark": "#121212",
-              "card-light": "#FFFFFF",
-              "card-dark": "#1E1E1E",
-              "text-light-primary": "#212121",
-              "text-dark-primary": "#FFFFFF",
-              "text-light-secondary": "#757575",
-              "text-dark-secondary": "#BDBDBD",
-              "accent-red": "#F44336",
-              "accent-amber": "#FFC107"
+              primary: "#13ec13",
+              "background-light": "#f8fcf8",
+              "background-dark": "#102210",
+              "text-light": "#0d1b0d",
+              "text-dark": "#e7f3e7",
+              "subtle-light": "#4c9a4c",
+              "subtle-dark": "#a3d3a3",
+              "border-light": "#cfe7cf",
+              "border-dark": "#2a4a2a",
+              "surface-light": "#e7f3e7",
+              "surface-dark": "#1a3a1a",
+              accent: "#FFC107",
             },
-            fontFamily: {
-              "display": ["Space Grotesk", "sans-serif"]
+            fontFamily: { display: ["Space Grotesk", "sans-serif"] },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "0.75rem",
+              xl: "1rem",
+              full: "9999px",
             },
-            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
           },
         },
-      }
+      };
     </script>
-<style>
+    <style>
       .material-symbols-outlined {
         font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
       }
       .material-symbols-outlined.filled {
-        font-variation-settings: 'FILL' 1;
+        font-variation-settings: "FILL" 1;
       }
     </style>
-</head>
-<body class="bg-background-light dark:bg-background-dark font-display text-text-light-primary dark:text-text-dark-primary">
-<div class="relative flex min-h-screen w-full flex-col">
-<!-- TopNavBar -->
-<header class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-gray-200/50 dark:border-gray-700/50 bg-card-light/80 dark:bg-card-dark/80 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-8">
-<div class="flex items-center gap-4">
-<div class="size-6 text-primary">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="currentColor">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" />
-</svg>
-</div>
-<h2 class="text-xl font-bold tracking-tight">NutriAI</h2>
-</div>
-<div class="flex items-center gap-6 sm:gap-8">
-<nav class="hidden items-center gap-6 text-sm font-medium sm:flex">
-<a class="text-text-light-secondary dark:text-text-dark-secondary hover:text-primary dark:hover:text-primary" href="#">Dashboard</a>
-<a class="text-text-light-secondary dark:text-text-dark-secondary hover:text-primary dark:hover:text-primary" href="#">Meal History</a>
-<a class="text-text-light-secondary dark:text-text-dark-secondary hover:text-primary dark:hover:text-primary" href="#">Profile</a>
-</nav>
-<div class="flex items-center gap-4">
-<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-primary/20 text-text-light-primary dark:text-text-dark-primary hover:bg-primary/30 dark:hover:bg-primary/40">
-<span class="material-symbols-outlined">notifications</span>
-</button>
-<div class="aspect-square size-10 rounded-full bg-cover bg-center bg-no-repeat" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCyXrlQwstTNO7QKgv_znKm8m-uw9CN_-nRaQ3GMdJw49hWMTmIr9FTHXpp3xSuQjNEUqIMI0TZ5XcNSavvmYZk7sC_xCQo1ZPezI_GtuWoV_M1mgrWweKBkWH2Arw5TP-rukBJBGqlHbViWUSEipZGpZrttQXdIe-hvvhumHJNjOm3cUwQWpze5kqSfyREAm_4a3pNjPYjeMavmARhYbVTUWsFkBRIDD_uEbRy1cG83I9P2VwpF4eeYpCcY4HM9YkDP663x17Ke4eO");'></div>
-</div>
-</div>
-</header>
-<main class="flex h-full flex-1 flex-col items-center justify-start px-4 py-8 sm:px-6 lg:py-12">
-<div class="flex w-full max-w-2xl flex-col gap-6">
-<!-- PageHeading -->
-<div class="flex flex-wrap justify-between gap-3 text-center">
-<p class="w-full text-3xl font-black tracking-tighter sm:text-4xl">How was the Spicy Chicken and Quinoa Bowl?</p>
-</div>
-<!-- Feedback Card -->
-<div class="flex flex-col items-stretch justify-start rounded-xl bg-card-light dark:bg-card-dark shadow-lg">
-<div class="w-full aspect-video rounded-t-xl bg-cover bg-center bg-no-repeat" data-alt="A close-up shot of a spicy chicken and quinoa bowl with fresh vegetables" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAVBwpKPdz2EEXaT5V5LPKNaIv-V5VMEb_ez0z4LojSe2Wlqi_pK-IhZuaJwUIQc1XShS2qnG874BjmnojPzPi2ciFhFN69PEDOzN3fZpPwNWgp1jptfHFydOpKdlXOQcCtY22UJ1QNOjLR5cT8PHaT_DYs8SCYj2cN3nvLSTb3x5BiLhhPiMlZyD-Pu-MyamxKNKwTvk8UDLI_R6vuWOOz-qiEw9pGJPGxDlAtb5GkVIsInRUU2yNixfY5CZUXM7J15CeTlLA6IlCv");'></div>
-<div class="flex w-full grow flex-col items-stretch justify-center gap-4 p-6">
-<h3 class="text-2xl font-bold tracking-tight">Spicy Chicken and Quinoa Bowl</h3>
-<!-- Chips -->
-<div class="flex flex-wrap gap-2">
-<div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 px-3">
-<p class="text-xs font-medium text-text-light-primary dark:text-text-dark-primary">30 Mins</p>
-</div>
-<div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 px-3">
-<p class="text-xs font-medium text-text-light-primary dark:text-text-dark-primary">Spicy</p>
-</div>
-<div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 px-3">
-<p class="text-xs font-medium text-text-light-primary dark:text-text-dark-primary">Gluten-Free</p>
-</div>
-</div>
-<p class="text-text-light-secondary dark:text-text-dark-secondary text-base font-normal leading-relaxed">
-                            A vibrant and flavorful bowl packed with protein and wholesome grains, perfect for a quick and healthy weeknight dinner.
-                        </p>
-<hr class="my-2 border-gray-200 dark:border-gray-700"/>
-<p class="text-base font-medium text-text-light-primary dark:text-text-dark-primary">Did you enjoy this recommendation?</p>
-<!-- Feedback Interaction Group -->
-<div class="flex flex-wrap items-center justify-between gap-4">
-<!-- ReactionBar -->
-<div class="flex items-center gap-2">
-<button class="group flex h-12 w-12 items-center justify-center rounded-full border-2 border-primary bg-transparent text-primary transition-colors hover:bg-primary hover:text-white dark:hover:text-card-dark">
-<span class="material-symbols-outlined text-2xl">thumb_up</span>
-</button>
-<button class="group flex h-12 w-12 items-center justify-center rounded-full border-2 border-accent-red bg-transparent text-accent-red transition-colors hover:bg-accent-red hover:text-white dark:hover:text-card-dark">
-<span class="material-symbols-outlined text-2xl">thumb_down</span>
-</button>
-</div>
-<!-- Star Rating -->
-<div class="flex items-center gap-1 text-accent-amber">
-<span class="material-symbols-outlined filled cursor-pointer text-3xl">star</span>
-<span class="material-symbols-outlined filled cursor-pointer text-3xl">star</span>
-<span class="material-symbols-outlined filled cursor-pointer text-3xl">star</span>
-<span class="material-symbols-outlined filled cursor-pointer text-3xl">star</span>
-<span class="material-symbols-outlined cursor-pointer text-3xl">star</span>
-</div>
-</div>
-<!-- Collapsible Comment Section -->
-<div class="mt-4 flex flex-col gap-4">
-<details>
-<summary class="cursor-pointer font-medium text-primary hover:underline">Add a comment (optional)</summary>
-<div class="mt-4 flex flex-col gap-3">
-<textarea class="w-full rounded-lg border-gray-300 bg-background-light p-3 text-sm text-text-light-primary shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-card-dark dark:text-text-dark-primary dark:placeholder:text-text-dark-secondary" id="feedback-comment" placeholder="What did you like or dislike? Any changes you made?" rows="4"></textarea>
-<button class="flex w-full cursor-pointer items-center justify-center rounded-lg bg-primary px-4 py-3 text-sm font-bold text-white shadow-md transition-opacity hover:opacity-90 sm:w-auto sm:self-end">Submit Feedback</button>
-</div>
-</details>
-</div>
-</div>
-</div>
-<!-- Confirmation Toast -->
-<div class="fixed bottom-5 right-5 flex items-center gap-4 rounded-lg bg-card-light dark:bg-card-dark p-4 shadow-2xl">
-<div class="flex size-8 items-center justify-center rounded-full bg-primary text-white">
-<span class="material-symbols-outlined">task_alt</span>
-</div>
-<p class="text-sm font-medium">Feedback submitted successfully!</p>
-</div>
-</div>
-</main>
-</div>
-</body></html>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark"
+  >
+    <div class="relative flex min-h-screen w-full flex-col">
+      <!-- Top Navigation Bar (canonical) -->
+      <header
+        class="sticky top-0 z-20 gpa-1 flex items-center justify-start whitespace-nowrap border-b border-border-light dark:border-border-dark px-4 py-3 sm:px-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm gap-8"
+      >
+        <!-- Logo -->
+        <a
+          href="dashborad.html"
+          class="flex items-center gap-3 text-text-light dark:text-text-dark"
+        >
+          <div class="w-6 h-6 text-primary" aria-hidden="true">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 48 48"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z"
+              />
+            </svg>
+          </div>
+          <h2 class="text-xl font-bold leading-tight tracking-tighter">
+            NutriAI
+          </h2>
+        </a>
+
+        <!-- Navigation -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a
+            class="text-sm font-medium hover:text-primary transition-colors"
+            href="dashborad.html"
+            >Home</a
+          >
+          <a
+            class="text-sm font-medium hover:text-primary transition-colors"
+            href="myplan.html"
+            >My Plan</a
+          >
+          <a
+            class="text-sm font-medium hover:text-primary transition-colors"
+            href="userprofile.html"
+            >Profile</a
+          >
+        </nav>
+
+        <!-- Right Side -->
+        <div class="flex items-center gap-2 ml-auto">
+          <label class="hidden sm:flex items-center gap-2">
+            <span
+              class="material-symbols-outlined text-subtle-light dark:text-subtle-dark"
+              >search</span
+            >
+            <input
+              class="form-input hidden sm:block w-44 rounded-lg border border-border-light bg-background-light dark:bg-background-dark px-3 py-2"
+              placeholder="Search"
+            />
+          </label>
+          <a
+            href="login.html"
+            class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-text-light text-sm font-bold"
+            >Log in</a
+          >
+        </div>
+      </header>
+      <main
+        class="flex h-full flex-1 flex-col items-center justify-start px-4 py-8 sm:px-6 lg:py-12"
+      >
+        <div class="flex w-full max-w-2xl flex-col gap-6">
+          <!-- PageHeading -->
+          <div class="flex flex-wrap justify-between gap-3 text-center">
+            <p id="feedback-heading" class="w-full text-3xl font-black tracking-tighter sm:text-4xl">
+              How was your meal?
+            </p>
+          </div>
+          <!-- Feedback Card -->
+          <div
+            class="flex flex-col items-stretch justify-start rounded-xl bg-card-light dark:bg-card-dark shadow-lg"
+          >
+          <div
+            id="feedback-image"
+            class="w-full aspect-video rounded-t-xl bg-cover bg-center bg-no-repeat"
+            data-alt="A close-up shot of a spicy chicken and quinoa bowl with fresh vegetables"
+            style="
+                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAVBwpKPdz2EEXaT5V5LPKNaIv-V5VMEb_ez0z4LojSe2Wlqi_pK-IhZuaJwUIQc1XShS2qnG874BjmnojPzPi2ciFhFN69PEDOzN3fZpPwNWgp1jptfHFydOpKdlXOQcCtY22UJ1QNOjLR5cT8PHaT_DYs8SCYj2cN3nvLSTb3x5BiLhhPiMlZyD-Pu-MyamxKNKwTvk8UDLI_R6vuWOOz-qiEw9pGJPGxDlAtb5GkVIsInRUU2yNixfY5CZUXM7J15CeTlLA6IlCv&quot;);
+              "
+          ></div>
+            <div
+              class="flex w-full grow flex-col items-stretch justify-center gap-4 p-6"
+            >
+              <h3 id="feedback-title" class="text-2xl font-bold tracking-tight">
+                Meal title
+              </h3>
+              <!-- Chips -->
+              <div id="feedback-tags" class="flex flex-wrap gap-2"></div>
+              <p
+                id="feedback-description"
+                class="text-subtle-light dark:text-subtle-dark text-base font-normal leading-relaxed"
+              >
+                Your personalized recommendation details will appear here.
+              </p>
+              <hr class="my-2 border-gray-200 dark:border-gray-700" />
+              <p
+                class="text-base font-medium text-text-light dark:text-text-dark"
+              >
+                Did you enjoy this recommendation?
+              </p>
+              <!-- Feedback Interaction Group -->
+              <div class="flex flex-wrap items-center justify-between gap-4">
+                <!-- ReactionBar -->
+                <div class="flex items-center gap-2">
+                  <button
+                    data-like="true"
+                    class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary bg-transparent text-primary transition-colors hover:bg-primary/20"
+                  >
+                    <span class="material-symbols-outlined text-xl"
+                      >thumb_up</span
+                    >
+                  </button>
+                  <button
+                    data-like="false"
+                    class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-accent bg-transparent text-accent transition-colors hover:bg-accent/20"
+                  >
+                    <span class="material-symbols-outlined text-xl"
+                      >thumb_down</span
+                    >
+                  </button>
+                </div>
+                <!-- Star Rating -->
+                <div class="flex items-center gap-1 text-accent-amber">
+                  <span data-star="1" class="material-symbols-outlined filled cursor-pointer text-3xl">star</span>
+                  <span data-star="2" class="material-symbols-outlined filled cursor-pointer text-3xl">star</span>
+                  <span data-star="3" class="material-symbols-outlined filled cursor-pointer text-3xl">star</span>
+                  <span data-star="4" class="material-symbols-outlined filled cursor-pointer text-3xl">star</span>
+                  <span data-star="5" class="material-symbols-outlined cursor-pointer text-3xl">star</span>
+                </div>
+              </div>
+              <!-- Collapsible Comment Section -->
+              <div class="mt-4 flex flex-col gap-4">
+                <details>
+                  <summary
+                    class="cursor-pointer font-medium text-primary hover:underline"
+                  >
+                    Add a comment (optional)
+                  </summary>
+                  <div class="mt-4 flex flex-col gap-3">
+                    <textarea
+                      class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark h-24 placeholder:text-subtle-light dark:placeholder:text-subtle-dark px-4 py-3 text-sm font-normal leading-normal"
+                      id="feedback-comment"
+                      placeholder="What did you like or dislike? Any changes you made?"
+                    ></textarea>
+                    <button
+                      id="feedback-submit"
+                      class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-text-light dark:text-text-dark text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90 w-full sm:w-auto"
+                    >
+                      Submit Feedback
+                    </button>
+                    <p id="feedback-status" class="text-sm text-text-light/70 dark:text-text-dark/70"></p>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
+
+<script src="/js/api.js"></script>
+<script src="/js/feedback.js"></script>
+<script src="/js/session.js"></script>

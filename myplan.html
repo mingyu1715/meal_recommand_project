@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NutriAI - My Meal Plan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#13ec13",
+                        "background-light": "#f8fcf8",
+                        "background-dark": "#102210",
+                        "text-light": "#0d1b0d",
+                        "text-dark": "#e7f3e7",
+                        "subtle-light": "#4c9a4c",
+                        "subtle-dark": "#a3d3a3",
+                        "border-light": "#cfe7cf",
+                        "border-dark": "#2a4a2a",
+                        "surface-light": "#e7f3e7",
+                        "surface-dark": "#1a3a1a",
+                        accent: "#FFC107",
+                    },
+                    fontFamily: { display: ["Space Grotesk", "sans-serif"] },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        lg: "0.75rem",
+                        xl: "1rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-content-container flex flex-col w-full flex-1">
+<!-- Top Navigation Bar (canonical) -->
+<header class="sticky top-0 z-20 gpa-1 flex items-center justify-start whitespace-nowrap border-b border-border-light dark:border-border-dark px-4 py-3 sm:px-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm gap-8">
+
+    <!-- Logo -->
+    <a href="dashborad.html" class="flex items-center gap-3 text-text-light dark:text-text-dark">
+        <div class="w-6 h-6 text-primary" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="currentColor">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" />
+            </svg>
+        </div>
+        <h2 class="text-xl font-bold leading-tight tracking-tighter">NutriAI</h2>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="hidden md:flex items-center gap-8">
+        <a class="text-sm font-medium hover:text-primary transition-colors" href="dashborad.html">Home</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors" href="myplan.html">My Plan</a>
+        <a class="text-sm font-medium hover:text-primary transition-colors" href="userprofile.html">Profile</a>
+    </nav>
+
+    <!-- Right Side -->
+    <div class="flex items-center gap-4 ml-auto">
+        <label class="hidden sm:flex items-center gap-2">
+            <span class="material-symbols-outlined text-subtle-light dark:text-subtle-dark">search</span>
+            <input class="form-input hidden sm:block w-44 rounded-lg border border-border-light bg-background-light dark:bg-background-dark px-3 py-2" placeholder="Search" />
+        </label>
+        <a href="login.html" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-text-light text-sm font-bold">Log In</a>
+    </div>
+</header>
+<main class="mx-auto w-full max-w-7xl flex flex-col gap-8 px-4 md:px-10 lg:px-20 py-6">
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between gap-3 mb-6">
+<div class="flex min-w-72 flex-col gap-2">
+<p class="text-4xl font-black leading-tight tracking-[-0.033em] text-text-light dark:text-text-dark">My Meal Plan</p>
+<p class="text-base font-normal leading-normal text-text-light/70 dark:text-text-dark/70">View your daily meal logs and nutritional totals.</p>
+</div>
+</div>
+<!-- Date Navigator (Modified Toolbar) -->
+<div class="flex items-center justify-between gap-2 px-4 py-3 mb-2 border rounded-lg border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark">
+<button id="plan-prev" class="p-2 rounded-full hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-text-light dark:text-text-dark">chevron_left</span>
+</button>
+<h3 id="plan-date" class="text-lg sm:text-xl font-bold text-center text-text-light dark:text-text-dark">Today</h3>
+<button id="plan-next" class="p-2 rounded-full hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-text-light dark:text-text-dark">chevron_right</span>
+</button>
+</div>
+<p id="plan-status" class="px-4 text-sm text-text-light/70 dark:text-text-dark/70 mb-4"></p>
+<!-- Manual add form -->
+<div class="px-4 w-full flex flex-col gap-3">
+  <button id="manual-plan-toggle" class="self-start flex items-center gap-2 px-4 py-2 rounded-lg border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark text-sm font-semibold text-text-light dark:text-text-dark hover:bg-primary/10">
+    <span class="material-symbols-outlined text-base">add</span>
+    <span class="toggle-label">Add manual meal</span>
+  </button>
+  <div id="manual-plan-panel" class="hidden">
+    <form id="manual-plan-form" class="grid gap-3 md:grid-cols-[2fr,1fr,auto] items-end bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark rounded-xl p-4">
+      <label class="flex flex-col gap-2">
+        <span class="text-sm font-medium text-text-light dark:text-text-dark">Meal name</span>
+        <input id="manual-name" class="form-input rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark px-3 py-2" placeholder="e.g. Sweet potato salad" required/>
+      </label>
+      <label class="flex flex-col gap-2">
+        <span class="text-sm font-medium text-text-light dark:text-text-dark">Plan slot</span>
+        <select id="manual-slot" class="form-select rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark px-3 py-2">
+          <option value="BREAKFAST">Breakfast</option>
+          <option value="LUNCH">Lunch</option>
+          <option value="DINNER">Dinner</option>
+          <option value="SNACK">Snack</option>
+        </select>
+      </label>
+      <button id="manual-plan-submit" type="submit" class="flex items-center justify-center h-12 px-5 rounded-lg bg-primary text-white font-semibold hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/40">Add Meal</button>
+    </form>
+    <p id="manual-plan-status" class="mt-2 text-sm text-text-light/70 dark:text-text-dark/70"></p>
+  </div>
+</div>
+<!-- SectionHeader -->
+<h2 class="text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 text-text-light dark:text-text-dark">Daily Totals</h2>
+<!-- Stats -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 p-4">
+<div class="flex flex-1 flex-col gap-2 rounded-lg p-6 border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark">
+<p class="text-base font-medium leading-normal text-text-light/80 dark:text-text-dark/80">Calories</p>
+<p id="stat-calories" class="tracking-tight text-3xl font-bold leading-tight text-primary">--</p>
+</div>
+<div class="flex flex-1 flex-col gap-2 rounded-lg p-6 border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark">
+<p class="text-base font-medium leading-normal text-text-light/80 dark:text-text-dark/80">Protein</p>
+<p id="stat-protein" class="tracking-tight text-3xl font-bold leading-tight text-text-light dark:text-text-dark">--</p>
+</div>
+<div class="flex flex-1 flex-col gap-2 rounded-lg p-6 border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark">
+<p class="text-base font-medium leading-normal text-text-light/80 dark:text-text-dark/80">Fat</p>
+<p id="stat-fat" class="tracking-tight text-3xl font-bold leading-tight text-text-light dark:text-text-dark">--</p>
+</div>
+<div class="flex flex-1 flex-col gap-2 rounded-lg p-6 border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark">
+<p class="text-base font-medium leading-normal text-text-light/80 dark:text-text-dark/80">Carbs</p>
+<p id="stat-carbs" class="tracking-tight text-3xl font-bold leading-tight text-text-light dark:text-text-dark">--</p>
+</div>
+</div>
+<!-- Meal Group Card -->
+<div id="plan-meals" class="space-y-6 mt-8">
+<div class="flex flex-col items-center justify-center gap-4 rounded-xl p-12 text-center border-2 border-dashed border-border-light dark:border-border-dark bg-card-light/50 dark:bg-card-dark/50">
+<span class="material-symbols-outlined text-5xl text-text-light/40 dark:text-text-dark/40">restaurant_menu</span>
+<h3 class="text-xl font-bold text-text-light dark:text-text-dark">Loading your plan…</h3>
+<p class="text-text-light/60 dark:text-text-dark/60 max-w-xs">We’re syncing your most recent recommendations.</p>
+</div>
+</div>
+</main>
+</div>
+</body></html>
+
+<script src="/js/api.js"></script>
+<script src="/js/myplan.js"></script>
+<script src="/js/session.js"></script>

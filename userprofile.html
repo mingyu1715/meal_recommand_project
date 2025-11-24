@@ -1,0 +1,434 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>NutriAI - Account Settings</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#13ec13",
+              "background-light": "#f8fcf8",
+              "background-dark": "#102210",
+              "text-light": "#0d1b0d",
+              "text-dark": "#e7f3e7",
+              "subtle-light": "#4c9a4c",
+              "subtle-dark": "#a3d3a3",
+              "border-light": "#cfe7cf",
+              "border-dark": "#2a4a2a",
+              "surface-light": "#e7f3e7",
+              "surface-dark": "#1a3a1a",
+              accent: "#FFC107",
+            },
+            fontFamily: { display: ["Space Grotesk", "sans-serif"] },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "0.75rem",
+              xl: "1rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark"
+  >
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+      <div class="layout-content-container flex flex-col w-full flex-1">
+        <header
+          class="sticky top-0 z-20 gpa-1 flex items-center justify-start whitespace-nowrap border-b border-border-light dark:border-border-dark px-4 py-3 sm:px-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm gap-8"
+        >
+          <!-- Logo -->
+          <a
+            href="dashborad.html"
+            class="flex items-center gap-3 text-text-light dark:text-text-dark"
+          >
+            <div class="w-6 h-6 text-primary" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 48 48"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z"
+                />
+              </svg>
+            </div>
+            <h2 class="text-xl font-bold leading-tight tracking-tighter">
+              NutriAI
+            </h2>
+          </a>
+
+          <!-- Navigation -->
+          <nav class="hidden md:flex items-center gap-8">
+            <a
+              class="text-sm font-medium hover:text-primary transition-colors"
+              href="dashborad.html"
+              >Home</a
+            >
+            <a
+              class="text-sm font-medium hover:text-primary transition-colors"
+              href="myplan.html"
+              >My Plan</a
+            >
+            <a
+              class="text-sm font-medium hover:text-primary transition-colors"
+              href="userprofile.html"
+              >Profile</a
+            >
+          </nav>
+
+          <!-- Right Side -->
+          <div class="flex items-center gap-4 ml-auto">
+            <label class="hidden sm:flex items-center gap-2">
+              <span
+                class="material-symbols-outlined text-subtle-light dark:text-subtle-dark"
+                >search</span
+              >
+              <input
+                class="form-input hidden sm:block w-44 rounded-lg border border-border-light bg-background-light dark:bg-background-dark px-3 py-2"
+                placeholder="Search"
+              />
+            </label>
+            <a
+              href="login.html"
+              class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-text-light text-sm font-bold"
+              >Log In</a
+            >
+          </div>
+        </header>
+        <main
+          class="mx-auto w-full max-w-7xl flex flex-col gap-8 px-4 md:px-10 lg:px-20 py-6"
+        >
+          <div class="flex flex-wrap justify-between gap-3">
+            <p
+              class="text-text-light dark:text-text-dark text-4xl font-black leading-tight tracking-[-0.033em] min-w-72"
+            >
+              Account Settings
+            </p>
+          </div>
+          <!-- Profile & Goals Card -->
+          <div
+            class="flex flex-col rounded-xl shadow-[0_0_12px_rgba(0,0,0,0.05)] bg-card-light dark:bg-card-dark"
+          >
+            <div
+              class="p-6 border-b border-border-light dark:border-border-dark"
+            >
+              <p
+                class="text-text-light dark:text-text-dark text-lg font-bold leading-tight tracking-[-0.015em]"
+              >
+                Profile &amp; Goals
+              </p>
+              <p
+                class="text-subtext-light dark:text-subtext-dark text-base font-normal leading-normal"
+              >
+                Update your personal and fitness information here.
+              </p>
+            </div>
+            <form id="profile-form" class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <label class="flex flex-col w-full">
+                <p
+                  class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2"
+                >
+                  Full Name
+                </p>
+                <input
+                  id="profile-name"
+                  name="name"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark h-12 placeholder:text-subtle-light dark:placeholder:text-subtle-dark px-4 text-base font-normal leading-normal"
+                  value="Alex Doe"
+                />
+              </label>
+              <label class="flex flex-col w-full">
+                <p
+                  class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2"
+                >
+                  Email Address
+                </p>
+                <input
+                  id="profile-email"
+                  name="email"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-subtle-light dark:text-subtle-dark focus:outline-0 focus:ring-0 border border-border-light dark:border-border-dark bg-background-light/50 dark:bg-background-dark/50 h-12 px-4 text-base font-normal leading-normal cursor-not-allowed"
+                  readonly=""
+                  value="alex.doe@example.com"
+                />
+              </label>
+              <label class="flex flex-col w-full">
+                <p
+                  class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2"
+                >
+                  Age
+                </p>
+                <input
+                  id="profile-age"
+                  name="age"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark h-12 placeholder:text-subtle-light dark:placeholder:text-subtle-dark px-4 text-base font-normal leading-normal"
+                  type="number"
+                  value="30"
+                  min="1"
+                  max="120"
+                />
+              </label>
+              <label class="flex flex-col w-full">
+                <p
+                  class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2"
+                >
+                  Gender
+                </p>
+                <select
+                  id="profile-gender"
+                  name="gender"
+                  class="form-select flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark h-12 px-4 text-base font-normal leading-normal"
+                >
+                  <option value="">Select…</option>
+                  <option value="MALE">Male</option>
+                  <option value="FEMALE">Female</option>
+                  <option value="OTHER">Prefer not to say</option>
+                </select>
+              </label>
+              <label class="flex flex-col w-full">
+                <p
+                  class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2"
+                >
+                  Height (cm)
+                </p>
+                <input
+                  id="profile-height"
+                  name="heightCm"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark h-12 placeholder:text-subtle-light dark:placeholder:text-subtle-dark px-4 text-base font-normal leading-normal"
+                  type="number"
+                  value="178"
+                />
+              </label>
+              <label class="flex flex-col w-full">
+                <p
+                  class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2"
+                >
+                  Current Weight (kg)
+                </p>
+                <input
+                  id="profile-weight"
+                  name="weightKg"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark h-12 placeholder:text-subtle-light dark:placeholder:text-subtle-dark px-4 text-base font-normal leading-normal"
+                  type="number"
+                  value="75"
+                />
+              </label>
+              <label class="flex flex-col w-full">
+                <p
+                  class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2"
+                >
+                  Goal Weight (kg)
+                </p>
+                <input
+                  id="profile-target-weight"
+                  name="targetWeightKg"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark h-12 placeholder:text-subtle-light dark:placeholder:text-subtle-dark px-4 text-base font-normal leading-normal"
+                  type="number"
+                  value="70"
+                />
+              </label>
+              <label class="flex flex-col w-full">
+                <p
+                  class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2"
+                >
+                  Activity Level
+                </p>
+                <select
+                  id="profile-activity"
+                  name="activityLevel"
+                  class="form-select flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark h-12 px-4 text-base font-normal leading-normal"
+                >
+                  <option value="LOW">Low</option>
+                  <option value="MODERATE">Moderate</option>
+                  <option value="HIGH">High</option>
+                  <option value="ATHLETE">Athlete</option>
+                </select>
+              </label>
+              <label class="flex flex-col w-full">
+                <p
+                  class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2"
+                >
+                  Goal
+                </p>
+                <select
+                  id="profile-goal"
+                  name="goalType"
+                  class="form-select flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark h-12 px-4 text-base font-normal leading-normal"
+                >
+                  <option value="LOSE_WEIGHT">Lose Weight</option>
+                  <option value="MAINTAIN_WEIGHT">Maintain Weight</option>
+                  <option value="GAIN_MUSCLE">Gain Muscle</option>
+                </select>
+              </label>
+            </form>
+            <div
+              class="p-6 border-t border-border-light dark:border-border-dark flex flex-col sm:flex-row items-start sm:items-center gap-3 justify-between"
+            >
+              <p id="profile-status" class="text-sm text-text-light/70 dark:text-text-dark/70"></p>
+              <button
+                type="submit"
+                form="profile-form"
+                id="profile-save"
+                class="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-text-light text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <span class="truncate">Save Changes</span>
+              </button>
+            </div>
+          </div>
+          <!-- Allergies Card -->
+          <div
+            class="flex flex-col rounded-xl shadow-[0_0_12px_rgba(0,0,0,0.05)] bg-card-light dark:bg-card-dark"
+          >
+            <div class="p-6">
+              <p
+                class="text-text-light dark:text-text-dark text-lg font-bold leading-tight tracking-[-0.015em]"
+              >
+                Allergies
+              </p>
+              <p
+                class="text-subtext-light dark:text-subtext-dark text-base font-normal leading-normal"
+              >
+                Add or remove allergies to customize your meal plan.
+              </p>
+            </div>
+            <div class="px-6 pb-6">
+              <div
+                id="allergy-tags"
+                class="flex flex-wrap gap-2 mb-4 p-4 min-h-[60px] rounded-lg border border-dashed border-border-light dark:border-border-dark"
+              >
+                <p class="text-sm text-text-light/60 dark:text-text-dark/60">No allergies yet.</p>
+              </div>
+              <label class="flex flex-col w-full">
+                <p
+                  class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2"
+                >
+                  Add Allergy
+                </p>
+                <div class="relative flex items-center">
+                  <input
+                    id="allergy-input"
+                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark h-12 placeholder:text-subtle-light dark:placeholder:text-subtle-dark pl-12 pr-4 text-base font-normal leading-normal"
+                    placeholder="Search for an allergy..."
+                    value=""
+                  />
+                  <span
+                    class="material-symbols-outlined absolute left-4 text-subtle-light dark:text-subtle-dark"
+                    >search</span
+                  >
+                </div>
+              </label>
+              <div class="flex items-center justify-between gap-3 mt-4">
+                <button
+                  type="button"
+                  id="add-allergy"
+                  class="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-text-light hover:opacity-90"
+                >
+                  <span class="material-symbols-outlined text-base">add</span>
+                  Add
+                </button>
+                <button
+                  type="button"
+                  id="save-allergies"
+                  class="flex items-center gap-2 rounded-lg border border-primary px-4 py-2 text-sm font-semibold text-primary hover:bg-primary/10"
+                >
+                  Save Allergies
+                </button>
+              </div>
+              <p id="allergies-status" class="mt-2 text-sm text-text-light/70 dark:text-text-dark/70"></p>
+            </div>
+          </div>
+          <!-- Dietary Preferences Card -->
+          <div
+            class="flex flex-col rounded-xl shadow-[0_0_12px_rgba(0,0,0,0.05)] bg-card-light dark:bg-card-dark"
+          >
+            <div class="p-6">
+              <p
+                class="text-text-light dark:text-text-dark text-lg font-bold leading-tight tracking-[-0.015em]"
+              >
+                Dietary Preferences
+              </p>
+              <p
+                class="text-subtext-light dark:text-subtext-dark text-base font-normal leading-normal"
+              >
+                Help us understand what you like to eat.
+              </p>
+            </div>
+            <div class="px-6 pb-6">
+              <div
+                id="preference-tags"
+                class="flex flex-wrap gap-2 mb-4 p-4 min-h-[60px] rounded-lg border border-dashed border-border-light dark:border-border-dark"
+              >
+                <p class="text-sm text-text-light/60 dark:text-text-dark/60">Share the meal types you enjoy.</p>
+              </div>
+              <label class="flex flex-col w-full">
+                <p
+                  class="text-text-light dark:text-text-dark text-base font-medium leading-normal pb-2"
+                >
+                  Add a preference
+                </p>
+                <div class="flex gap-2">
+                  <input
+                    id="preference-input"
+                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark h-12 placeholder:text-subtle-light dark:placeholder:text-subtle-dark px-4 text-base font-normal leading-normal"
+                    placeholder="e.g. Vegetarian, Gluten-Free"
+                    value=""
+                  />
+                  <button
+                    type="button"
+                    id="add-preference"
+                    class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary text-text-light dark:text-text-dark text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90"
+                  >
+                    <span class="truncate">Add</span>
+                  </button>
+                </div>
+              </label>
+              <div class="flex items-center justify-between gap-3 mt-4">
+                <button
+                  type="button"
+                  id="save-preferences"
+                  class="flex items-center gap-2 rounded-lg border border-primary px-4 py-2 text-sm font-semibold text-primary hover:bg-primary/10"
+                >
+                  Save Preferences
+                </button>
+              </div>
+              <p id="preferences-status" class="mt-2 text-sm text-text-light/70 dark:text-text-dark/70"></p>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script src="/js/api.js"></script>
+<script src="/js/profile.js"></script>
+<script src="/js/session.js"></script>

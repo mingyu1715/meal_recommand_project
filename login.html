@@ -1,86 +1,170 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>NutriAI - Login</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-<script>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>NutriAI - Login</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script>
       tailwind.config = {
         darkMode: "class",
         theme: {
           extend: {
             colors: {
-              "primary": "#4CAF50",
-              "background-light": "#F5F5F5",
-              "background-dark": "#1a1a1a",
-              "card-light": "#FFFFFF",
-              "card-dark": "#242424",
-              "text-light": "#333333",
-              "text-dark": "#F5F5F5",
-              "subtle-text-light": "#666666",
-              "subtle-text-dark": "#a0a0a0",
-              "border-light": "#e0e0e0",
-              "border-dark": "#444444",
-              "accent": "#FFC107"
+              primary: "#13ec13",
+              "background-light": "#f8fcf8",
+              "background-dark": "#102210",
+              "text-light": "#0d1b0d",
+              "text-dark": "#e7f3e7",
+              "subtle-light": "#4c9a4c",
+              "subtle-dark": "#a3d3a3",
+              "border-light": "#cfe7cf",
+              "border-dark": "#2a4a2a",
+              "surface-light": "#e7f3e7",
+              "surface-dark": "#1a3a1a",
+              accent: "#FFC107",
             },
-            fontFamily: {
-              "display": ["Space Grotesk", "sans-serif"]
-            },
+            fontFamily: { display: ["Space Grotesk", "sans-serif"] },
             borderRadius: {
-              "DEFAULT": "0.25rem",
-              "lg": "0.5rem",
-              "xl": "0.75rem",
-              "full": "9999px"
+              DEFAULT: "0.5rem",
+              lg: "0.75rem",
+              xl: "1rem",
+              full: "9999px",
             },
           },
         },
-      }
+      };
     </script>
-</head>
-<body class="font-display">
-<div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "sans-serif";'>
-<div class="absolute inset-0 z-0">
-<div class="w-full h-full bg-center bg-no-repeat bg-cover" data-alt="A blurred background image of a colorful, healthy salad in a white bowl." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDRLAekKSuu1aIwQlXJTOykFUcBcy-oAxBBzBwACqtImin84N6hhVWCyZoukD5bbnJHoRqH3ukb9FYWpI02T9GEoCTwuRsCxBoFe6lA96QV40_CVxiMeIe6AsCoIqOgSDkoEplh9Ot_QZr4fzAu7o_uN494DXslt---Q8wrJnl3rlujaGTPJiJ5iuJ9l64yT28eFvridxPA0lpynnFdXN2qIICVFL5PX7X2AgyJNaRy9cJ-dUfQE5Obq-I7qRIVPOzkUhQ1ECJL34no"); filter: blur(4px) brightness(0.7);'></div>
-</div>
-<div class="relative layout-container flex h-full grow flex-col justify-center items-center py-10 px-4 sm:px-6 lg:px-8">
-<div class="layout-content-container flex flex-col w-full max-w-md bg-card-light dark:bg-card-dark rounded-xl shadow-2xl p-8 sm:p-10">
-<div class="flex flex-col items-center mb-8">
-<div class="flex items-center justify-center h-12 w-12 rounded-full bg-primary/20 mb-4">
-<span class="material-symbols-outlined text-primary text-3xl">restaurant_menu</span>
-</div>
-<div class="flex flex-col gap-2 text-center">
-<p class="text-text-light dark:text-text-dark text-3xl font-bold leading-tight tracking-tight">Welcome Back!</p>
-<p class="text-subtle-text-light dark:text-subtle-text-dark text-base font-normal leading-normal">Log in to access your personalized meal plans</p>
-</div>
-</div>
-<div class="flex flex-col gap-4">
-<label class="flex flex-col w-full">
-<p class="text-text-light dark:text-text-dark text-sm font-medium leading-normal pb-2">Email or Username</p>
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark focus:border-primary h-12 placeholder:text-subtle-text-light dark:placeholder:text-subtle-text-dark px-4 py-2 text-base font-normal leading-normal focus:ring-2 focus:ring-primary/30" placeholder="Enter your email or username" value=""/>
-</label>
-<label class="flex flex-col w-full">
-<p class="text-text-light dark:text-text-dark text-sm font-medium leading-normal pb-2">Password</p>
-<div class="relative flex w-full flex-1 items-stretch">
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark focus:border-primary h-12 placeholder:text-subtle-text-light dark:placeholder:text-subtle-text-dark pr-12 px-4 py-2 text-base font-normal leading-normal focus:ring-2 focus:ring-primary/30" placeholder="Enter your password" type="password" value=""/>
-<button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 flex items-center pr-4 text-subtle-text-light dark:text-subtle-text-dark hover:text-text-light dark:hover:text-text-dark">
-<span class="material-symbols-outlined">visibility</span>
-</button>
-</div>
-</label>
-</div>
-<div class="flex justify-end pt-2 pb-6">
-<a class="text-sm font-medium text-primary hover:text-primary/80 underline" href="#">Forgot Password?</a>
-</div>
-<button class="flex items-center justify-center w-full h-12 px-6 bg-primary text-white rounded-lg text-base font-bold transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-light dark:focus:ring-offset-background-dark">Login</button>
-<div class="flex justify-center mt-8">
-<p class="text-subtle-text-light dark:text-subtle-text-dark text-sm">
-                        Don't have an account? <a class="font-medium text-primary hover:text-primary/80 underline" href="legistration.html">Sign Up</a>
-</p>
-</div>
-</div>
-</div>
-</div>
-</body></html>
+  </head>
+  <body class="font-display">
+    <div
+      class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden"
+      style="font-family: &quot;Space Grotesk&quot;, &quot;sans-serif&quot;"
+    >
+      <div class="absolute inset-0 z-0">
+        <div
+          class="w-full h-full bg-center bg-no-repeat bg-cover"
+          data-alt="A blurred background image of a colorful, healthy salad in a white bowl."
+          style="background-color: white"
+        ></div>
+      </div>
+      <div
+        class="relative layout-container flex h-full grow flex-col justify-center items-center py-10 px-4 sm:px-6 lg:px-8"
+      >
+        <div
+          class="layout-content-container flex flex-col w-full max-w-md bg-card-light dark:bg-card-dark rounded-xl shadow-2xl p-8 sm:p-10"
+        >
+          <div class="flex flex-col items-center mb-8">
+            <div
+              class="flex items-center justify-center h-12 w-12 rounded-full bg-primary/20 mb-4"
+            >
+              <a
+                href="legistration.html"
+                class="flex items-center justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 48 48"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z"
+                  />
+                </svg>
+              </a>
+            </div>
+            <div class="flex flex-col gap-2 text-center">
+              <p
+                class="text-text-light dark:text-text-dark text-3xl font-bold leading-tight tracking-tight"
+              >
+                Welcome Back!
+              </p>
+              <p
+                class="text-subtle-text-light dark:text-subtle-text-dark text-base font-normal leading-normal"
+              >
+                Log in to access your personalized meal plans
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col gap-4">
+            <label class="flex flex-col w-full">
+              <p
+                class="text-text-light dark:text-text-dark text-sm font-medium leading-normal pb-2"
+              >
+                Email or Username
+              </p>
+              <input
+                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark focus:border-primary h-12 placeholder:text-subtle-text-light dark:placeholder:text-subtle-text-dark px-4 py-2 text-base font-normal leading-normal focus:ring-2 focus:ring-primary/30"
+                placeholder="Enter your email or username"
+                value=""
+              />
+            </label>
+            <label class="flex flex-col w-full">
+              <p
+                class="text-text-light dark:text-text-dark text-sm font-medium leading-normal pb-2"
+              >
+                Password
+              </p>
+              <div class="relative flex w-full flex-1 items-stretch">
+                <input
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark focus:border-primary h-12 placeholder:text-subtle-text-light dark:placeholder:text-subtle-text-dark pr-12 px-4 py-2 text-base font-normal leading-normal focus:ring-2 focus:ring-primary/30"
+                  placeholder="Enter your password"
+                  type="password"
+                  value=""
+                />
+                <button
+                  type="button"
+                  aria-label="Toggle password visibility"
+                  class="absolute inset-y-0 right-0 flex items-center pr-4 text-subtle-text-light dark:text-subtle-text-dark hover:text-text-light dark:hover:text-text-dark"
+                >
+                  <span class="material-symbols-outlined">visibility</span>
+                </button>
+              </div>
+            </label>
+          </div>
+          <div class="flex justify-end pt-2 pb-6">
+            <a
+              class="text-sm font-medium text-primary hover:text-primary/80 underline"
+              href="login.html"
+              >Forgot Password?</a
+            >
+          </div>
+          <button
+            id="login-submit"
+            type="button"
+            class="flex items-center justify-center w-full h-12 px-6 bg-primary text-text-light dark:text-text-dark rounded-lg text-base font-bold transition-colors hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-primary/50"
+          >
+            Login
+          </button>
+          <div class="flex justify-center mt-8">
+            <p
+              class="text-subtle-text-light dark:text-subtle-text-dark text-sm"
+            >
+              Don't have an account?
+              <a
+                class="font-medium text-primary hover:text-primary/80 underline"
+                href="legistration.html"
+                >Sign Up</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script src="/js/api.js"></script>
+<script src="/js/login.js"></script>
+<script src="/js/session.js"></script>
