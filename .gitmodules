@@ -1,0 +1,3 @@
+[submodule "web_backend"]
+	path = web_backend
+	url = https://github.com/08boramae/meal_recommand_project_backend
