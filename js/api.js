@@ -1,7 +1,7 @@
 // Minimal client-side API helper for NutriAI backend
 // Exposes a global `Api` object for simple pages.
 (function (win) {
-  const API_BASE = win.__API_BASE__ || '/api'
+  const API_BASE = 'https://wpback.boramae.dev/api'
 
   const getHeaders = () => {
     const headers = { Accept: 'application/json' }
