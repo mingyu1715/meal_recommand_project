@@ -118,17 +118,19 @@
               </p>
               <div class="relative flex w-full flex-1 items-stretch">
                 <input
+                  id="login-password"
                   class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 border border-border-light dark:border-border-dark bg-card-light dark:bg-card-dark focus:border-primary h-12 placeholder:text-subtle-text-light dark:placeholder:text-subtle-text-dark pr-12 px-4 py-2 text-base font-normal leading-normal focus:ring-2 focus:ring-primary/30"
                   placeholder="Enter your password"
                   type="password"
                   value=""
                 />
                 <button
+                  id="toggle-password"
                   type="button"
                   aria-label="Toggle password visibility"
                   class="absolute inset-y-0 right-0 flex items-center pr-4 text-subtle-text-light dark:text-subtle-text-dark hover:text-text-light dark:hover:text-text-dark"
                 >
-                  <span class="material-symbols-outlined">visibility</span>
+                  <span class="material-symbols-outlined" aria-hidden="true">visibility</span>
                 </button>
               </div>
             </label>

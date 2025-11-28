@@ -1,8 +1,19 @@
 (function () {
   const emailInput = document.querySelector('input[placeholder="Enter your email or username"]')
-  const passwordInput = document.querySelector('input[type="password"]')
+  const passwordInput = document.getElementById('login-password')
   const loginBtn = document.getElementById('login-submit')
+  const passwordToggle = document.getElementById('toggle-password')
+  const passwordToggleIcon = passwordToggle?.querySelector('.material-symbols-outlined')
   if (!loginBtn) return
+
+  if (passwordToggle && passwordInput) {
+    passwordToggle.addEventListener('click', () => {
+      const isHidden = passwordInput.type === 'password'
+      passwordInput.type = isHidden ? 'text' : 'password'
+      if (passwordToggleIcon) passwordToggleIcon.textContent = isHidden ? 'visibility_off' : 'visibility'
+      passwordInput.focus({ preventScroll: true })
+    })
+  }
 
   const setLoading = (isLoading) => {
     loginBtn.disabled = isLoading
