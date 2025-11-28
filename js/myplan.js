@@ -69,7 +69,6 @@
     if (isToday(viewDate)) {
       enableManualEntry(true)
       setStatus('Loading your plan…', 'accent')
-      loadStats()
       loadPlan()
     } else {
       enableManualEntry(false)
@@ -102,15 +101,6 @@
     )
   }
 
-  async function loadStats() {
-    try {
-      const dashboard = await Api.getDashboard()
-      updateStats(dashboard?.nutrition?.weekly?.averages)
-    } catch (err) {
-      console.error('Failed to load stats', err)
-    }
-  }
-
   function updateStats(averages = {}) {
     statsEls.calories && (statsEls.calories.textContent = formatStat(averages.calories, ''))
     statsEls.protein && (statsEls.protein.textContent = formatStat(averages.protein, 'g'))
@@ -132,11 +122,13 @@
       const accepted = Array.isArray(recs)
         ? recs.filter((item) => item.status === 'ACCEPTED' && !item.consumed)
         : []
+      updateStatsFromPlan(accepted)
       renderPlan(accepted)
       setStatus(accepted.length ? '' : 'Add meals from the dashboard using “Add to My Plan”.')
     } catch (err) {
       console.error('Failed to load plan', err)
       setStatus(err?.body?.message || 'Failed to load your plan.', 'error')
+      updateStats({})
     }
   }
 
@@ -227,6 +219,29 @@
     if (meal.carbs) data.push(`${meal.carbs}g C`)
     if (meal.fat) data.push(`${meal.fat}g F`)
     return data.join(' · ')
+  }
+
+  function updateStatsFromPlan(recommendations = []) {
+    updateStats(sumPlanNutrition(recommendations))
+  }
+
+  function sumPlanNutrition(recommendations = []) {
+    return recommendations.reduce(
+      (totals, rec) => {
+        const meal = rec.meal || {}
+        totals.calories += toNumber(meal.calories ?? rec.calories)
+        totals.protein += toNumber(meal.protein ?? rec.protein)
+        totals.fat += toNumber(meal.fat ?? rec.fat)
+        totals.carbs += toNumber(meal.carbs ?? rec.carbs)
+        return totals
+      },
+      { calories: 0, protein: 0, fat: 0, carbs: 0 },
+    )
+  }
+
+  function toNumber(value) {
+    const num = Number(value)
+    return Number.isFinite(num) ? num : 0
   }
 
   async function handleManualSubmit(event) {
