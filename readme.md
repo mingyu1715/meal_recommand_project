@@ -6,7 +6,7 @@ AI 추천 백엔드(`web_backend/`)와 정적 프론트엔드(루트의 HTML 파
 
 ```
 web_project/
-├─ dashborad.html ······················· 추천/대시보드 화면
+├─ index.html ··························· 추천/대시보드 화면
 ├─ myplan.html ·························· 일정/영양 요약 화면
 ├─ login.html, legistration.html ······· 로그인/가입
 ├─ detail.html, feedback.html, userprofile.html
@@ -42,7 +42,7 @@ npm run dev
 
 ### 4. 주요 화면 주소
 
-- 대시보드: `http://localhost:4000/dashborad.html`
+- 대시보드: `http://localhost:4000/index.html`
 - 로그인/가입: `/login.html`, `/legistration.html`
 - 식단 계획: `/myplan.html`
 - 사용자 프로필: `/userprofile.html`
@@ -54,7 +54,7 @@ npm run dev
 
 | 화면 | 내용 |
 | --- | --- |
-| **대시보드** (`dashborad.html`) | 무드/카테고리 칩 또는 “Get Recommendation” 버튼으로 AI 추천을 트리거. 각 추천은 이미지를 제거한 카드 형태로 표현되며, “Add to My Plan”을 누르면 원하는 끼니(B/L/D/Snack)에 배치할 수 있습니다. |
+| **대시보드** (`index.html`) | 무드/카테고리 칩 또는 “Get Recommendation” 버튼으로 AI 추천을 트리거. 각 추천은 이미지를 제거한 카드 형태로 표현되며, “Add to My Plan”을 누르면 원하는 끼니(B/L/D/Snack)에 배치할 수 있습니다. |
 | **My Plan** (`myplan.html`) | 오늘 데이터를 기본으로 보여 주고, 좌/우 화살표로 날짜를 이동할 수 있습니다. 다른 날짜는 비어 있는 상태로만 표시해 히스토리를 쉽게 확인할 수 있습니다. 오늘 날짜에서는 직접 식단 이름을 입력해 AI가 영양정보를 추정한 뒤 플랜에 추가할 수 있으며, 각 항목은 “Remove” 버튼으로 삭제할 수 있습니다. |
 | **Meal Detail** | 기본 이미지 없이 영양 정보, 서빙 정보, 태그만으로 간결하게 표시합니다. |
 | **Feedback** | 최신 추천을 불러와 좋아요/별점/코멘트를 남길 수 있습니다. |

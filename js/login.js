@@ -21,7 +21,7 @@
     try {
       const data = await Api.login({ identifier: email, password })
       console.log('Logged in', data)
-      window.location.href = '/dashborad.html'
+      window.location.href = '/index.html'
     } catch (err) {
       console.error(err)
       const message = err?.body?.message || err.message || 'Login failed'

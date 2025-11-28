@@ -1,8 +1,32 @@
 (function () {
+  const DASHBOARD_PATH = '/index.html'
+  const LOGIN_PATH = '/login.html'
+  const PUBLIC_PATHS = [LOGIN_PATH, '/legistration.html', '/registration.html']
   const INACTIVITY_LIMIT = 30 * 60 * 1000
   const activityEvents = ['click', 'keydown', 'mousemove', 'scroll', 'touchstart']
   let inactivityTimer = null
   let activityBound = false
+
+  const currentPath = () => {
+    if (typeof window === 'undefined') return ''
+    return window.location.pathname || '/'
+  }
+
+  const pathMatches = (target) => {
+    if (!target) return false
+    const normalized = target.startsWith('/') ? target : `/${target}`
+    const path = currentPath()
+    if (!path) return false
+    return path === normalized || path.endsWith(normalized)
+  }
+
+  const isPublicPage = () => PUBLIC_PATHS.some((path) => pathMatches(path))
+
+  const redirectTo = (target) => {
+    if (typeof window === 'undefined') return
+    if (pathMatches(target)) return
+    window.location.href = target
+  }
 
   const setFieldValue = (selector, value) => {
     document.querySelectorAll(selector).forEach((el) => {
@@ -49,11 +73,13 @@
     setFieldValue('[data-profile-name]', profile.name || '')
     setFieldValue('[data-profile-email]', profile.email || '')
     startInactivityTimer()
+    if (isPublicPage()) redirectTo(DASHBOARD_PATH)
   }
 
   const renderLoggedOut = () => {
     document.documentElement.dataset.auth = 'false'
     stopInactivityTimer()
+    if (!isPublicPage()) redirectTo(LOGIN_PATH)
   }
 
   function startInactivityTimer() {

@@ -268,7 +268,7 @@
     try {
       const payload = buildPayload()
       await Api.register(payload)
-      window.location.href = '/dashborad.html'
+      window.location.href = '/index.html'
     } catch (err) {
       console.error(err)
       const message = err?.body?.message || err.message || 'Registration failed'
