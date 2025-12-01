@@ -198,6 +198,7 @@
           </div>
           <div class="flex items-center gap-2">
             <a href="/detail.html?id=${meal.id}" class="text-sm font-medium text-primary hover:underline">Details</a>
+            <button type="button" class="text-sm font-medium text-primary hover:underline" data-plan-feedback="${rec.id}">Feedback</button>
             <button type="button" class="text-sm text-red-500 hover:text-red-600" data-plan-delete="${rec.id}">Remove</button>
           </div>
         </div>
@@ -279,6 +280,15 @@
   }
 
   planContainer.addEventListener('click', async (event) => {
+    const feedbackBtn = event.target.closest('[data-plan-feedback]')
+    if (feedbackBtn) {
+      const recId = feedbackBtn.getAttribute('data-plan-feedback')
+      if (recId) {
+        window.location.href = `/feedback.html?recommendationId=${encodeURIComponent(recId)}`
+      }
+      return
+    }
+
     const btn = event.target.closest('[data-plan-delete]')
     if (!btn) return
     const id = btn.getAttribute('data-plan-delete')

@@ -142,14 +142,6 @@
           <div
             class="flex flex-col items-stretch justify-start rounded-xl bg-card-light dark:bg-card-dark shadow-lg"
           >
-          <div
-            id="feedback-image"
-            class="w-full aspect-video rounded-t-xl bg-cover bg-center bg-no-repeat"
-            data-alt="A close-up shot of a spicy chicken and quinoa bowl with fresh vegetables"
-            style="
-                background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAVBwpKPdz2EEXaT5V5LPKNaIv-V5VMEb_ez0z4LojSe2Wlqi_pK-IhZuaJwUIQc1XShS2qnG874BjmnojPzPi2ciFhFN69PEDOzN3fZpPwNWgp1jptfHFydOpKdlXOQcCtY22UJ1QNOjLR5cT8PHaT_DYs8SCYj2cN3nvLSTb3x5BiLhhPiMlZyD-Pu-MyamxKNKwTvk8UDLI_R6vuWOOz-qiEw9pGJPGxDlAtb5GkVIsInRUU2yNixfY5CZUXM7J15CeTlLA6IlCv&quot;);
-              "
-          ></div>
             <div
               class="flex w-full grow flex-col items-stretch justify-center gap-4 p-6"
             >
@@ -171,7 +163,7 @@
                 Did you enjoy this recommendation?
               </p>
               <!-- Feedback Interaction Group -->
-              <div class="flex flex-wrap items-center justify-between gap-4">
+              <div class="flex flex-wrap items-center gap-4">
                 <!-- ReactionBar -->
                 <div class="flex items-center gap-2">
                   <button
@@ -191,38 +183,24 @@
                     >
                   </button>
                 </div>
-                <!-- Star Rating -->
-                <div class="flex items-center gap-1 text-accent-amber">
-                  <span data-star="1" class="material-symbols-outlined filled cursor-pointer text-3xl">star</span>
-                  <span data-star="2" class="material-symbols-outlined filled cursor-pointer text-3xl">star</span>
-                  <span data-star="3" class="material-symbols-outlined filled cursor-pointer text-3xl">star</span>
-                  <span data-star="4" class="material-symbols-outlined filled cursor-pointer text-3xl">star</span>
-                  <span data-star="5" class="material-symbols-outlined cursor-pointer text-3xl">star</span>
-                </div>
               </div>
-              <!-- Collapsible Comment Section -->
-              <div class="mt-4 flex flex-col gap-4">
-                <details>
-                  <summary
-                    class="cursor-pointer font-medium text-primary hover:underline"
-                  >
-                    Add a comment (optional)
-                  </summary>
-                  <div class="mt-4 flex flex-col gap-3">
-                    <textarea
-                      class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark h-24 placeholder:text-subtle-light dark:placeholder:text-subtle-dark px-4 py-3 text-sm font-normal leading-normal"
-                      id="feedback-comment"
-                      placeholder="What did you like or dislike? Any changes you made?"
-                    ></textarea>
-                    <button
-                      id="feedback-submit"
-                      class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-text-light dark:text-text-dark text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90 w-full sm:w-auto"
-                    >
-                      Submit Feedback
-                    </button>
-                    <p id="feedback-status" class="text-sm text-text-light/70 dark:text-text-dark/70"></p>
-                  </div>
-                </details>
+              <!-- Comment Section -->
+              <div class="mt-4 flex flex-col gap-3">
+                <p class="text-base font-medium text-text-light dark:text-text-dark">Tell us more (10+ characters required)</p>
+                <textarea
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark h-28 placeholder:text-subtle-light dark:placeholder:text-subtle-dark px-4 py-3 text-sm font-normal leading-normal"
+                  id="feedback-comment"
+                  placeholder="What did you like or dislike? Any changes you made?"
+                  minlength="10"
+                  required
+                ></textarea>
+                <button
+                  id="feedback-submit"
+                  class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-text-light dark:text-text-dark text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90 w-full sm:w-auto"
+                >
+                  Submit Feedback
+                </button>
+                <p id="feedback-status" class="text-sm text-text-light/70 dark:text-text-dark/70"></p>
               </div>
             </div>
           </div>

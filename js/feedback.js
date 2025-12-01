@@ -1,28 +1,20 @@
 (function () {
   const headingEl = document.getElementById('feedback-heading')
-  const imageEl = document.getElementById('feedback-image')
   const titleEl = document.getElementById('feedback-title')
   const descriptionEl = document.getElementById('feedback-description')
   const tagsEl = document.getElementById('feedback-tags')
   const likeButtons = document.querySelectorAll('[data-like]')
-  const starButtons = document.querySelectorAll('[data-star]')
   const submitBtn = document.getElementById('feedback-submit')
   const commentEl = document.getElementById('feedback-comment')
   const statusEl = document.getElementById('feedback-status')
 
   if (!submitBtn) return
 
-  let context = null
-  let rating = 5
-  let liked = true
+  const params = new URLSearchParams(window.location.search || '')
+  const requestedRecommendationId = params.get('recommendationId')
 
-  const escapeHtml = (str) =>
-    String(str || '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;')
+  let context = null
+  let liked = true
 
   const setStatus = (message, variant = 'muted') => {
     if (!statusEl) return
@@ -59,12 +51,16 @@
     })
   }
 
-  const highlightStars = () => {
-    starButtons.forEach((star) => {
-      const value = Number(star.dataset.star)
-      if (value <= rating) star.classList.add('filled')
-      else star.classList.remove('filled')
-    })
+  const getComment = () => commentEl?.value?.trim() || ''
+
+  const ensureValidComment = () => {
+    const text = getComment()
+    if (text.length < 10) {
+      setStatus('코멘트를 10자 이상 작성해주세요.', 'error')
+      commentEl?.focus()
+      return false
+    }
+    return true
   }
 
   const hydrate = (rec) => {
@@ -73,24 +69,35 @@
     headingEl && (headingEl.textContent = `How was ${name}?`)
     titleEl && (titleEl.textContent = name)
     descriptionEl && (descriptionEl.textContent = meal.description || rec.reason || 'Tell us how it went.')
-    if (imageEl) {
-      const url = meal.imageUrl || 'https://via.placeholder.com/800x600?text=Meal'
-      imageEl.style.backgroundImage = `url('${url}')`
-    }
     renderTags(Array.isArray(meal.tags) ? meal.tags : [])
   }
 
+  const pickRecommendation = (items) => {
+    if (!Array.isArray(items) || !items.length) return null
+    if (requestedRecommendationId) {
+      return items.find((item) => item.id === requestedRecommendationId) || null
+    }
+    const accepted = items.filter((item) => item.status === 'ACCEPTED' && !item.consumed)
+    return accepted[0] || items[0]
+  }
+
   const loadRecommendation = async () => {
-    setStatus('Loading your latest recommendation…', 'accent')
+    const limitParam = requestedRecommendationId ? 'limit=100' : 'limit=30'
+    setStatus(requestedRecommendationId ? 'Loading your meal…' : 'Loading your latest recommendation…', 'accent')
     try {
-      const items = await Api.listRecommendations('limit=1')
-      if (!items.length) {
-        setStatus('No recommendations available to review yet.', 'error')
+      const items = await Api.listRecommendations(limitParam)
+      const match = pickRecommendation(items)
+      if (!match) {
+        const message = requestedRecommendationId
+          ? 'The selected meal is no longer available.'
+          : 'No recommendations available to review yet.'
+        setStatus(message, 'error')
         submitBtn.disabled = true
         return
       }
-      context = items[0]
+      context = match
       hydrate(context)
+      submitBtn.disabled = false
       setStatus('')
     } catch (err) {
       console.error(err)
@@ -106,27 +113,21 @@
     })
   })
 
-  starButtons.forEach((star) => {
-    star.addEventListener('click', () => {
-      rating = Number(star.dataset.star) || rating
-      highlightStars()
-    })
-  })
-
   submitBtn.addEventListener('click', async () => {
     if (!context) {
       setStatus('No recommendation selected.', 'error')
       return
     }
+    if (!ensureValidComment()) return
     setStatus('Submitting feedback…', 'accent')
     submitBtn.disabled = true
     try {
+      const comment = getComment()
       const payload = {
         recommendationId: context.id,
         mealId: context.meal?.id,
         liked,
-        rating,
-        comment: commentEl?.value?.trim(),
+        comment,
       }
       await Api.submitFeedback(payload)
       setStatus('Thanks! Your feedback was recorded.')
@@ -140,6 +141,5 @@
   })
 
   highlightLikeButtons()
-  highlightStars()
   loadRecommendation()
 })()
